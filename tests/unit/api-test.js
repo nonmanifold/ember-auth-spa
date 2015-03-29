@@ -83,22 +83,22 @@ test('Logout without first loggin in', function(assert) {
 });
 /* ---------- PUBLIC PAGE ---------- */
 
-test('Access public page as user', function(assert) {
+test('Access contacts page as user', function(assert) {
 
   API.token = 'user';
 
-  return API.get('public').then(function(content) {
-    assert.equal(content, 'Lorem ipsum dolor sit amet');
+  return API.get('contacts').then(function(content) {
+    assert.equal(content, 'Lorem ipsum dolor sit amet, contacts');
   });
 
 });
 
-test('Access public page with expired token', function(assert) {
+test('Access contacts page with expired token', function(assert) {
 
   API.token = 'expired';
 
-  return API.get('public').then(function(content) {
-    assert.equal(content, 'Lorem ipsum dolor sit amet');
+  return API.get('contacts').then(function(content) {
+    assert.equal(content, 'Lorem ipsum dolor sit amet, contacts');
   });
 
 });
