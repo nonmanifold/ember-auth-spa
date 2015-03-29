@@ -18,8 +18,8 @@ var server = new Pretender(function() {
     return [200, {}, 'You are logged out'];
   });
 
-  this.get('/public', function() {
-    return [200, {}, 'Lorem ipsum dolor sit amet'];
+  this.get('/contacts', function() {
+    return [200, {}, 'Lorem ipsum dolor sit amet, contacts'];
   });
 
   this.get('/protected', function(request) {

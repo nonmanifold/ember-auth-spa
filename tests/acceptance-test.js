@@ -35,3 +35,23 @@ test('Visiting the index page', function(assert) {
   });
 
 });
+
+test('Accessing the contacts page', function(assert) {
+
+  visit('/');
+
+  clickLink('Contacts Page');
+
+  andThen(function() {
+    assert.equal( currentURL(), '/contacts' );
+    assert.equal( find('h4').text(), 'Contacts Page' );
+    assert.equal( find('#content').text(), 'Lorem ipsum dolor sit amet, contacts' );
+  });
+
+  clickLink('Go back');
+
+  andThen(function() {
+    assert.equal( currentURL(), '/' );
+  });
+
+});
