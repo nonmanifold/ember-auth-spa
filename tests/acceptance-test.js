@@ -80,6 +80,8 @@ test('Log in with incorrect username and password', function(assert) {
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
+    assert.strictEqual( find(':contains(You are logged in)').length, 0 );
+    assert.strictEqual( find('button:contains(Logout)').length, 0 );
   });
 
 });
@@ -90,9 +92,20 @@ test('Log in as user', function(assert) {
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
+    assert.equal( find('h4').text(), 'You are logged in as User' );
+    assert.strictEqual( find('button:contains(Login)').length, 0 );
+  });
+
+  clickButton('Logout');
+
+  andThen(function() {
+    assert.equal( currentURL(), '/' );
+    assert.strictEqual( find(':contains(You are logged in)').length, 0 );
+    assert.strictEqual( find('button:contains(Logout)').length, 0 );
   });
 
 });
+
 
 test('Accessing the contacts page', function (assert) {
 
