@@ -22,23 +22,10 @@ var server = new Pretender(function() {
     return [200, {}, 'Lorem ipsum dolor sit amet, contacts'];
   });
 
-  this.get('/protected', function(request) {
+  this.get('/admin', function(request) {
     switch (request.requestHeaders['Authorization']) {
       case 'Token token=user':
         return [200, {}, 'Since you can see this, you must be logged in!'];
-
-      case 'Token token=expired':
-        return [401, {}, 'Your session has expired'];
-
-      default:
-        return [401, {}, 'Please login to access this page'];
-    }
-  });
-
-  this.get('/secret', function(request) {
-    switch (request.requestHeaders['Authorization']) {
-      case 'Token token=user':
-        return [403, {}, 'You are not allowed to access this page'];
 
       case 'Token token=expired':
         return [401, {}, 'Your session has expired'];

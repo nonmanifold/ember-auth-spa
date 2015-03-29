@@ -55,3 +55,23 @@ test('Accessing the contacts page', function(assert) {
   });
 
 });
+
+test('Accessing the admin dashboard page as a guest', function(assert) {
+
+  visit('/');
+
+  clickLink('Admin dashboard');
+
+  andThen(function() {
+    assert.equal( currentURL(), '/admin' );
+    assert.equal( find('h4').text(), 'An error has occured!' );
+    assert.equal( find('#content').text(), 'Please login to access this page' );
+  });
+
+  clickLink('Go back');
+
+  andThen(function() {
+    assert.equal( currentURL(), '/' );
+  });
+
+});

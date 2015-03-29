@@ -105,9 +105,9 @@ test('Access contacts page with expired token', function(assert) {
 
 /* ---------- PROTECTED PAGE ---------- */
 
-test('Access protected page without logging in', function(assert) {
+test('Access admin page without logging in', function(assert) {
 
-  return API.get('protected').catch(function(error) {
+  return API.get('admin').catch(function(error) {
 
     assert.equal(error.status, 'Unauthorized');
     assert.equal(error.message, 'Please login to access this page');
@@ -116,21 +116,21 @@ test('Access protected page without logging in', function(assert) {
 
 });
 
-test('Access protected page as user', function(assert) {
+test('Access admin page as user', function(assert) {
 
   API.token = 'user';
 
-  return API.get('protected').then(function(content) {
+  return API.get('admin').then(function(content) {
     assert.equal(content, 'Since you can see this, you must be logged in!');
   });
 
 });
 
-test('Access protected page with expired token', function(assert) {
+test('Access admin page with expired token', function(assert) {
 
   API.token = 'expired';
 
-  return API.get('protected').catch(function(error) {
+  return API.get('admin').catch(function(error) {
 
     assert.equal(error.status, 'Unauthorized');
     assert.equal(error.message, 'Your session has expired');
@@ -139,42 +139,3 @@ test('Access protected page with expired token', function(assert) {
 
 });
 
-/* ---------- SECRET PAGE ---------- */
-
-test('Access secret page without logging in', function(assert) {
-
-  return API.get('secret').catch(function(error) {
-
-    assert.equal(error.status, 'Unauthorized');
-    assert.equal(error.message, 'Please login to access this page');
-
-  });
-
-});
-
-test('Access secret page as user', function(assert) {
-
-  API.token = 'user';
-
-  return API.get('secret').catch(function(error) {
-
-    assert.equal(error.status, 'Forbidden');
-    assert.equal(error.message, 'You are not allowed to access this page');
-
-  });
-
-});
-
-
-test('Access secret page with expired token', function(assert) {
-
-  API.token = 'expired';
-
-  return API.get('secret').catch(function(error) {
-
-    assert.equal(error.status, 'Unauthorized');
-    assert.equal(error.message, 'Your session has expired');
-
-  });
-
-});
