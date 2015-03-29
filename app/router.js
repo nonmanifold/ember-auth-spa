@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   "use strict";
+  this.route('login');
   this.route('contacts');
   this.route('admin');
 });
