@@ -1,8 +1,7 @@
 # ember-auth-spa
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
+Based on [Ember vs Angular: Authentication Example](http://brewhouse.io/blog/2015/02/12/ember-vs-angular-authentication.html).
+Uses [Pretender](https://github.com/trek/pretender) as mock server.
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
