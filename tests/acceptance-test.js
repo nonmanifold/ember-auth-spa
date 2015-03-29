@@ -134,15 +134,17 @@ test('Accessing the admin dashboard page as a guest', function (assert) {
   clickLink('Admin dashboard');
 
   andThen(function () {
-    assert.equal(currentURL(), '/admin');
-    assert.equal(find('h4').text(), 'An error has occured!');
+    assert.equal(currentURL(), '/login');
+    assert.equal(find('h4').text(), 'Please login');
     assert.equal(find('#content').text(), 'Please login to access this page');
   });
 
-  clickLink('Go back');
+  login('user', 'secret');
 
   andThen(function () {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/admin');
+    assert.equal( find('h4').text(), 'Admin dashboard' );
+    assert.equal( find('#content').text(), 'Since you can see this, you must be logged in!' );
   });
 
 });
