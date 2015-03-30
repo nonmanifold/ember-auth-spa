@@ -24,7 +24,7 @@ export default Ember.Route.extend({
           if (transition) {
             transition.retry();
           } else {
-            route.transitionTo('index');
+            route.transitionTo('admin');
           }
         },
         function(error) {

@@ -19,13 +19,13 @@
                   <a {{bind-attr href="view.href"}}>Contacts</a>
               {{/link-to}}
               {{#if session.user}}
-                  {{#link-to "admin" tagName="li"}}
-                      <a {{bind-attr href="view.href"}}>Admin dashboard</a>
-                  {{/link-to}}
+                {{#link-to "admin" tagName="li"}}
+                    <a {{bind-attr href="view.href"}}>Admin dashboard</a>
+                {{/link-to}}
               {{/if}}
                 <li>
                   {{#if session.user}}
-                    {{#link-to action  "logout"}}<span>{{session.user.name}}</span>, Sign out{{/link-to}}
+                      <a href="#/"  {{action  "logout"}}><span>{{session.user.name}}</span>, Sign out</a>
                   {{else}}
                     {{#link-to "login"}}Sign in{{/link-to}}
                   {{/if}}

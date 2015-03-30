@@ -91,12 +91,12 @@ test('Log in as user', function(assert) {
   login('user', 'secret');
 
   andThen(function() {
-    assert.equal( currentURL(), '/' );
+    assert.equal( currentURL(), '/admin' );
     assert.equal( find('#navbar li:last').text().trim(), 'User, Sign out' );
     assert.strictEqual( find('button:contains(Login)').length, 0 );
   });
 
-  clickLink('Logout');
+  clickLink('Sign out');
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
@@ -111,7 +111,7 @@ test('Accessing the contacts page', function (assert) {
 
   visit('/');
 
-  clickLink('Contacts Page');
+  clickLink('Contacts');
 
   andThen(function () {
     assert.equal(currentURL(), '/contacts');
@@ -119,7 +119,7 @@ test('Accessing the contacts page', function (assert) {
     assert.equal(find('#content').text(), 'Lorem ipsum dolor sit amet, contacts');
   });
 
-  clickLink('Home');
+  clickLink('Main');
 
   andThen(function () {
     assert.equal(currentURL(), '/');
@@ -129,9 +129,7 @@ test('Accessing the contacts page', function (assert) {
 
 test('Accessing the admin dashboard page as a guest', function (assert) {
 
-  visit('/');
-
-  clickLink('Admin dashboard');
+  visit('/admin');
 
   andThen(function () {
     assert.equal(currentURL(), '/login');
@@ -160,7 +158,7 @@ test('Accessing the admin page as an user', function(assert) {
     assert.equal( find('#content').text(), 'Since you can see this, you must be logged in!' );
   });
 
-  clickLink('Home');
+  clickLink('Main');
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
