@@ -45,7 +45,7 @@ test('Visiting the index page', function (assert) {
 
   andThen(function () {
     assert.equal(currentURL(), '/');
-    assert.equal(find('h2').text(), 'Ember.js auth SPA');
+    assert.equal(find('.navbar-brand').text(), 'Ember.js SPA with auth');
   });
 
 });
@@ -54,7 +54,7 @@ test('Log in with incorrect username and password', function(assert) {
 
   visit('/');
 
-  clickButton('Login');
+  clickLink('Login');
 
   andThen(function() {
     assert.equal( currentURL(), '/login' );
@@ -92,11 +92,11 @@ test('Log in as user', function(assert) {
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
-    assert.equal( find('h4').text(), 'You are logged in as User' );
+    assert.equal( find('#navbar li:last').text().trim(), 'User, Logout' );
     assert.strictEqual( find('button:contains(Login)').length, 0 );
   });
 
-  clickButton('Logout');
+  clickLink('Logout');
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
@@ -119,7 +119,7 @@ test('Accessing the contacts page', function (assert) {
     assert.equal(find('#content').text(), 'Lorem ipsum dolor sit amet, contacts');
   });
 
-  clickLink('Go back');
+  clickLink('Home');
 
   andThen(function () {
     assert.equal(currentURL(), '/');
@@ -160,7 +160,7 @@ test('Accessing the admin page as an user', function(assert) {
     assert.equal( find('#content').text(), 'Since you can see this, you must be logged in!' );
   });
 
-  clickLink('Go back');
+  clickLink('Home');
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
