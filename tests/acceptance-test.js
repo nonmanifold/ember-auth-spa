@@ -150,7 +150,7 @@ test('Accessing the admin page as an user', function(assert) {
 
   login('user', 'secret');
 
-  clickLink('Admin dashboard');
+  clickLink('Admin');
 
   andThen(function() {
     assert.equal( currentURL(), '/admin' );
