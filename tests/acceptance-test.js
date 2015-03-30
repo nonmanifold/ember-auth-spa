@@ -54,7 +54,7 @@ test('Log in with incorrect username and password', function(assert) {
 
   visit('/');
 
-  clickLink('Login');
+  clickLink('Sign in');
 
   andThen(function() {
     assert.equal( currentURL(), '/login' );
@@ -92,7 +92,7 @@ test('Log in as user', function(assert) {
 
   andThen(function() {
     assert.equal( currentURL(), '/' );
-    assert.equal( find('#navbar li:last').text().trim(), 'User, Logout' );
+    assert.equal( find('#navbar li:last').text().trim(), 'User, Sign out' );
     assert.strictEqual( find('button:contains(Login)').length, 0 );
   });
 
