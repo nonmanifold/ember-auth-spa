@@ -27,7 +27,7 @@
                   {{#if session.user}}
                       <a href="#/"  {{action  "logout"}}><span>{{session.user.name}}</span>, Sign out</a>
                   {{else}}
-                    {{#link-to "login"}}Sign in{{/link-to}}
+                     {{#link-to "login"}}Sign in{{/link-to}}
                   {{/if}}
                 </li>
             </ul>
@@ -38,3 +38,4 @@
 <div class="container">
   {{outlet}}
 </div>
+{{outlet 'modal'}}

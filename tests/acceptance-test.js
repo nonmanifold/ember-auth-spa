@@ -133,8 +133,7 @@ test('Accessing the admin dashboard page as a guest', function (assert) {
 
   andThen(function () {
     assert.equal(currentURL(), '/login');
-    assert.equal(find('h4').text(), 'Please login');
-    assert.equal(find('#content').text(), 'Please login to access this page');
+    assert.equal(find('.modal h4').text(), 'Please login');
   });
 
   login('user', 'secret');

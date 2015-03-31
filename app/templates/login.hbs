@@ -1,19 +1,25 @@
-<h4>Please login</h4>
+<div class="overlay" {{action "cancel"}}>
+</div>
+<div class="modal">
 
-{{#if message}}
-    <div id="content">{{message}}</div>
-{{/if}}
+    <h4>Please login</h4>
 
-<p>
-    <small>
-        To login as a user, use <code>user</code> / <code>secret</code>;<br>
-    </small>
-</p>
+  {{#if message}}
+      <div id="content">{{message}}</div>
+  {{/if}}
 
-<p>Username: {{input name="username" value=username}}</p>
-<p>Password: {{input type="password" name="password" value=password}}</p>
+    <p>
+        <small>
+            To login as a user, use <code>user</code> / <code>secret</code>;<br>
+        </small>
+    </p>
 
-<p>
-    <button {{action "submit"}} class="btn btn-primary">Submit</button>
-    <button {{action "cancel"}} class="btn">Cancel</button>
-</p>
+    <p>Username: {{input name="username" value=username}}</p>
+
+    <p>Password: {{input type="password" name="password" value=password}}</p>
+
+    <p>
+        <button {{action "submit"}} class="btn btn-primary">Submit</button>
+        <button {{action "cancel"}} class="btn">Cancel</button>
+    </p>
+</div>

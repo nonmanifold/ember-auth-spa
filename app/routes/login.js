@@ -24,6 +24,10 @@ export default Ember.Route.extend({
           if (transition) {
             transition.retry();
           } else {
+            var onSuccess=controller.get('onSuccess');
+            if(onSuccess){
+              onSuccess();
+            }
             route.transitionTo('admin');
           }
         },
@@ -43,7 +47,8 @@ export default Ember.Route.extend({
       username: null,
       password: null,
       message:  null,
-      transition: null
+      transition: null,
+      onSuccess:null
     });
   }
 });
