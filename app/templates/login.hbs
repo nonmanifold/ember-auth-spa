@@ -1,12 +1,10 @@
-<div class="overlay" {{action "cancel"}}>
-</div>
-<div class="modal">
+{{#modal-dialog action="cancel"}}
 
     <h4>Please login</h4>
 
-  {{#if message}}
-      <div id="content">{{message}}</div>
-  {{/if}}
+    {{#if message}}
+        <div id="content">{{message}}</div>
+    {{/if}}
 
     <p>
         <small>
@@ -22,4 +20,4 @@
         <button {{action "submit"}} class="btn btn-primary">Submit</button>
         <button {{action "cancel"}} class="btn">Cancel</button>
     </p>
-</div>
+{{/modal-dialog}}
